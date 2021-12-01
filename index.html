@@ -8,7 +8,7 @@
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 35%;
+  width: 20%;
   height:75%;
   border: 3px solid #121212;
   padding: 10px;
@@ -71,17 +71,22 @@ function redirect_page(){
 }
 
 function timer(){
+    var before_sec = "00:"
     var sec = 30;
     var timer = setInterval(function(){
-        document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
+        document.getElementById('safeTimerDisplay').innerHTML=before_sec+sec;
         sec--;
         if (sec < 0) {
             clearInterval(timer);
             document.getElementById('safeTimerDisplay').innerHTML='00:'
             redirect_page()
         }
+        if(sec == 9){
+    	before_sec = "00:0"
+    }
     }, 1000);
 }
+
 
 
 window.onload(timer())
